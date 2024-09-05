@@ -59,6 +59,28 @@ bash
 Copy code
 npm start
 Open your browser and go to http://localhost:4000 to access the application.
+## Swagger Documentation
+
+Swagger is used to document the API endpoints. To view the documentation:
+
+1. Run the server: `npm start`
+2. Open your browser and navigate to: `http://localhost:4000/api-docs`
+
+## Endpoints
+
+- **GET /**: Serve the home page.
+- **GET /chat**: Serve the chat page (authenticated).
+- **GET /login**: Serve the login page.
+- **GET /updateUser**: Serve the update user page (authenticated).
+- **GET /404**: Serve the 404 error page.
+- **GET /register**: Serve the registration page.
+- **GET /HomePage**: Serve the home page (authenticated).
+- **GET /profile**: Serve the profile page (authenticated).
+- **GET /api/v1/userProfile**: Get user profile data (authenticated).
+- **POST /api/v1/register**: Register a new user.
+- **POST /api/v1/login**: Log in a user.
+- **POST /api/v1/updateUser**: Update user details.
+- **POST /logout**: Log out the current user.
 
 Authentication and Profile Management
 Login
