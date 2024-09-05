@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - funChat</title>
+    <style>
+      /* Reset some default styles */
+      body,
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li,
+      header,
+      footer,
+      button,
+      img {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        color: #333;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      header .site-name {
+        font-size: 24px;
+        font-weight: bold;
+        animation: animateName 3s infinite;
+      }
+
+      @keyframes animateName {
+        0% {
+          color: #ff6600;
+        }
+        25% {
+          color: #66ccff;
+        }
+        50% {
+          color: #ffcc00;
+        }
+        75% {
+          color: #99cc00;
+        }
+        100% {
+          color: #ff6600;
+        }
+      }
+
+      header .nav-buttons {
+        display: flex;
+        gap: 15px;
+      }
+
+      header .nav-buttons button {
+        background-color: #ff6600;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      header .nav-buttons button:hover {
+        background-color: #cc5200;
+      }
+
+      main {
+        flex-grow: 1;
+        padding: 70px 20px 20px 20px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      main .profile-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      main .profile-container img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+
+      main .profile-container h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      main .profile-container button {
+        background-color: #ff6600;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      main .profile-container button:hover {
+        background-color: #cc5200;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="site-name">funChat</div>
+      <div class="nav-buttons">
+        <button id="logoutButton">Log Out</button>
+        <button onclick="window.location.href ='/HomePage'">Home</button>
+        <button onclick="window.location.href='/updateUser'">updateData</button>
+        <button onclick="window.location.href='/chat'">Chat</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="profile-container">
+        <img id="profilePicture" src="" alt="User Profile Picture" />
+        <h2 id="userName">John Doe</h2>
+        <button>My Messages</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 All rights reserved by funChat.</p>
+    </footer>
+    <script>
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", function () {
+          fetch("/logout", {
+            method: "POST",
+            credentials: "include"
+          })
+            .then((response) => {
+              if (response.ok) {
+                window.location.href = "/login";
+              } else {
+                alert("Failed to log out. Please try again.");
+              }
+            })
+            .catch((error) => console.error("Error logging out:", error));
+        });
+      fetch("/api/v1/userProfile", {
+        method: "GET",
+        credentials: "include"
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("profilePicture").src =
+            data.profilePicture || "https://via.placeholder.com/150";
+          document.getElementById("userName").textContent =
+            data.username || "User";
+        })
+        .catch((error) => console.error("Error fetching user profile:", error));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to funnyChat</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: left;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+      }
+      .content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #333;
+      }
+      .head {
+        margin-left: 44%;
+      }
+      .typing-container {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 4px solid;
+        color: rgb(19, 122, 182);
+        width: 18ch;
+        font-size: x-large;
+        animation: typing 4s steps(18) infinite, blink 0.55s step-end infinite;
+      }
+      .content button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+      .content button:hover {
+        background-color: #0056b3;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 60ch;
+        }
+      }
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: rgb(1, 9, 14);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="head">funnyChat</h1>
+    </header>
+
+    <div class="content">
+      <div class="typing-container">
+        <p>Connect, chat, and have fun with people from all over the world!</p>
+      </div>
+      <button onclick="window.location.href='/register'">Join Now</button>
+      <button onclick="window.location.href='/login'">Login</button>
+    </div>
+
+    <footer>
+      <p>All rights reserved by Muslim</p>
+    </footer>
+  </body>
+</html>
