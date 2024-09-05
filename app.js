@@ -7,6 +7,7 @@ const { Server } = require("socket.io");
 const dbConnect = require("./config/db_connection");
 const router = require("./routes/userRout");
 const setupSocket = require("./controller/socketIoSetUp");
+const setupSwagger = require("./config/swagger");
 const app = express();
 const server = createServer(app);
 const cors = require("cors");
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(router);
+setupSwagger(app);
 const io = setupSocket(server);
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
