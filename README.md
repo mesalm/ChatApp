@@ -33,7 +33,7 @@ Follow these steps to install the project on your local machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+   git clone https://github.com/mesalm/chatApp.git
 Navigate to the project directory:
 
 bash
@@ -110,7 +110,7 @@ License
 This project is licensed under the MIT License. You can read the full license in the LICENSE file.
 
 Contact
-If you have any questions, feel free to contact us at email@example.com.
+If you have any questions, feel free to contact us at mahamdabomesalm987@gmail.com.
 
 Troubleshooting Configuration Issues
 If you encounter issues running the project on your machine:
